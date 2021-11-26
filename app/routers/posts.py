@@ -88,7 +88,7 @@ async def get_posts(id:int, db: Session = Depends(get_db),
         detail=f"post with id: {id} was not found")
     
     if post.owner_id != current_user.id:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"Not authorized to perform this action")
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=f"Not authorized to perform this action")
 
     post_query.delete(synchronize_session=False)
     db.commit()
