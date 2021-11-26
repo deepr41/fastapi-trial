@@ -6,7 +6,7 @@ from .. import schemas,models, database, oauth2
 
 router = APIRouter()
 
-@router.post('/vote')
+@router.post('/vote', status_code=status.HTTP_201_CREATED)
 def vote(vote_request:schemas.Vote, db:Session = Depends(database.get_db), current_user = Depends(oauth2.get_current_user)):
     #check if post with id exists
     post_query = db.query(models.Post).filter(models.Post.id == vote_request.post_id)
