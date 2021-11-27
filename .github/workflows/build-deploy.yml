@@ -21,7 +21,7 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_PaSSWORD: ${{secrets.DATABASE_PASSWORD}}
+          POSTGRES_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
           POSTGRES_DB: ${{secrets.DATABASE_NAME}}
         ports:
           - 5432:5432
@@ -30,7 +30,7 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-          
+
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
